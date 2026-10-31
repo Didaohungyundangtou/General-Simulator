@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090c0a">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="大帅：张作霖模拟器 · 手机版。皇姑屯事件互动叙事，四种抉择，四种命运。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="大帅">
+  <title>大帅：张作霖模拟器</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/story.css">
+  <link rel="stylesheet" href="css/ending.css">
+  <link rel="stylesheet" href="css/codex.css">
+</head>
+<body>
+  <div class="page-ground" aria-hidden="true">
+    <div class="page-ground__glow"></div>
+    <div class="page-ground__rail page-ground__rail--a"></div>
+    <div class="page-ground__rail page-ground__rail--b"></div>
+    <p class="page-ground__mark">MUKDEN<br>1928</p>
+  </div>
+
+  <div class="app-shell">
+    <div class="app" id="app" data-textsize="normal">
+      <div class="noise" aria-hidden="true"></div>
+      <div class="app-vignette" aria-hidden="true"></div>
+
+      <!-- ═══════════════ 主菜单 ═══════════════ -->
+      <section class="screen home-screen is-active" id="screen-home" aria-label="主菜单">
+        <div class="home-art" aria-hidden="true">
+          <svg viewBox="0 0 480 900" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="heroBg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#111813"/>
+                <stop offset=".55" stop-color="#0c110d"/>
+                <stop offset="1" stop-color="#080b09"/>
+              </linearGradient>
+              <radialGradient id="heroSun" cx=".5" cy=".5" r=".5">
+                <stop offset="0" stop-color="#d0714f" stop-opacity=".42"/>
+                <stop offset=".45" stop-color="#8d3b2d" stop-opacity=".16"/>
+                <stop offset="1" stop-color="#8d3b2d" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="heroFade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#090c0a" stop-opacity=".8"/>
+                <stop offset=".35" stop-color="#090c0a" stop-opacity=".08"/>
+                <stop offset=".75" stop-color="#090c0a" stop-opacity=".3"/>
+                <stop offset="1" stop-color="#090c0a" stop-opacity=".96"/>
+              </linearGradient>
+              <pattern id="heroHatch" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+                <line x1="0" y1="0" x2="0" y2="18" stroke="#a58d62" stroke-width=".5" opacity=".16"/>
+              </pattern>
+            </defs>
+            <rect width="480" height="900" fill="url(#heroBg)"/>
+            <circle cx="346" cy="252" r="210" fill="url(#heroSun)"/>
+            <circle cx="346" cy="252" r="76" fill="none" stroke="#c08562" stroke-width=".8" opacity=".16"/>
+            <circle cx="346" cy="252" r="112" fill="none" stroke="#c08562" stroke-width=".5" opacity=".1"/>
+            <g fill="none" stroke="#9c8867" opacity=".18">
+              <path d="M0 610 L480 560" stroke-width="1"/>
+              <path d="M0 700 L480 640" stroke-width="1.2"/>
+              <path d="M0 766 L480 700" stroke-width="1.6"/>
+              <path d="M20 690 L110 590 M110 720 L200 620 M200 690 L300 586 M300 660 L400 560" stroke-width=".8"/>
+              <path d="M0 648 L480 588" stroke-width=".6" stroke-dasharray="3 12"/>
+            </g>
+            <g opacity=".5" fill="#080a08">
+              <path d="M0 706 C60 694 86 690 126 686 L126 706 L0 720 Z"/>
+              <path d="M300 646 L390 630 L470 640 L470 676 L300 690 Z"/>
+              <path d="M226 620 l46 -34 14 8 -24 14 30 0 4 24 -38 8 -12 26 -20 -6 8 -26 -22 -4z" opacity=".9"/>
+              <rect x="236" y="660" width="8" height="48"/>
+              <rect x="284" y="654" width="8" height="44"/>
+            </g>
+            <g opacity=".34" stroke="#ba9a67" fill="none">
+              <path d="M40 604 L440 540" stroke-width=".7"/>
+              <path d="M40 604 L40 900 M440 540 L440 900" stroke-width=".4"/>
+              <path d="M40 604 l12 16 M440 540 l-14 16" stroke-width=".8"/>
+            </g>
+            <g opacity=".2" fill="#d6c6a6" font-family="Georgia, serif" font-size="10" letter-spacing="4">
+              <text x="40" y="586">PEIPING</text>
+              <text x="382" y="522">MUKDEN</text>
+            </g>
+            <g opacity=".12" fill="url(#heroHatch)">
+              <rect y="380" width="480" height="520"/>
+            </g>
+            <rect width="480" height="900" fill="url(#heroFade)"/>
+            <g opacity=".24" stroke="#d3c3a4" stroke-width=".5" fill="none">
+              <path d="M24 0 L24 900" stroke-dasharray="2 14"/>
+              <circle cx="24" cy="118" r="2.2" fill="#d3c3a4" stroke="none"/>
+              <circle cx="24" cy="376" r="2.2" fill="#d3c3a4" stroke="none"/>
+              <circle cx="24" cy="632" r="2.2" fill="#d3c3a4" stroke="none"/>
+              <circle cx="24" cy="846" r="2.2" fill="#d3c3a4" stroke="none"/>
+            </g>
+          </svg>
+        </div>
+
+        <header class="home-top">
+          <div class="micro-brand">
+            <span class="micro-brand__dot" aria-hidden="true"></span>
+            <span>皇姑屯事件 · 互动叙事</span>
+          </div>
+          <button class="icon-btn" data-action="settings" aria-label="设置">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-gear"/></svg>
+          </button>
+        </header>
+
+        <div class="home-content">
+          <div class="poster">
+            <p class="poster-kicker">民国十七年 · 六月四日 · 凌晨</p>
+            <h1 class="poster-title" aria-label="大帅">
+              <span>大</span><span>帅</span><i class="poster-dot" aria-hidden="true">。</i>
+            </h1>
+            <div class="poster-subrow">
+              <span class="poster-rule" aria-hidden="true"></span>
+              <p class="poster-sub">张作霖模拟器</p>
+              <span class="poster-rule" aria-hidden="true"></span>
+            </div>
+            <p class="poster-en">SIMULATOR OF THE GENERAL</p>
+            <p class="poster-en poster-en--cn">THE GENERAL · MUKDEN 1928</p>
+            <div class="poster-seal" aria-hidden="true"><span>东</span><span>北</span><span>王</span></div>
+          </div>
+
+          <div class="home-spacer" aria-hidden="true"></div>
+
+          <article class="ticket" aria-label="京奉铁路特别专列乘车凭证">
+            <div class="ticket-head">
+              <span class="ticket-rail">京奉铁路 · 特别专列</span>
+              <span class="ticket-no">NO. 0604</span>
+            </div>
+            <div class="ticket-route">
+              <div class="ticket-city">
+                <b>北平</b>
+                <small>PEKING</small>
+              </div>
+              <div class="ticket-track" aria-hidden="true">
+                <span class="ticket-track__line"></span>
+                <svg class="ticket-train" viewBox="0 0 34 20"><path d="M2 15h21V8l6 3v4h3v3H2z" fill="currentColor"/><rect x="5" y="6" width="9" height="8" rx="1" fill="currentColor"/><rect x="16" y="9" width="4" height="5" fill="currentColor"/><circle cx="9" cy="18" r="2" fill="currentColor"/><circle cx="25" cy="18" r="2" fill="currentColor"/><path d="M27 4l6-2-4 5z" fill="currentColor" opacity=".55"/></svg>
+                <span class="ticket-track__line"></span>
+              </div>
+              <div class="ticket-city ticket-city--right">
+                <b>奉天</b>
+                <small>MUKDEN</small>
+              </div>
+            </div>
+            <div class="ticket-meta">
+              <span>民国十七年六月初四</span>
+              <span>04:55 发车</span>
+              <span>蓝钢车 · 一等</span>
+            </div>
+            <div class="ticket-bottom">
+              <div class="ticket-barcode" aria-hidden="true"></div>
+              <span class="ticket-stamp">凭票登车</span>
+            </div>
+          </article>
+
+          <div class="home-cta">
+            <button class="btn btn-primary" id="btn-start" data-action="start">
+              <span class="btn-main" id="home-primary-label">启程</span>
+              <span class="btn-sub" id="home-primary-sub">06.04 · 04:55 · 京奉线</span>
+            </button>
+            <button class="btn btn-quiet" id="btn-restart" data-action="restart-home" hidden>重新开始</button>
+          </div>
+        </div>
+
+        <nav class="home-nav" aria-label="档案">
+          <button data-codex="background"><span class="nav-no">01</span><span>时代背景</span></button>
+          <button data-codex="people"><span class="nav-no">02</span><span>人物</span></button>
+          <button data-codex="endings"><span class="nav-no">03</span><span>结局 <em id="home-ending-count">0/4</em></span></button>
+        </nav>
+
+        <footer class="home-foot">
+          <span>历史题材 · 含暴力描写</span>
+          <span>竖屏体验 · 轻触推进</span>
+        </footer>
+      </section>
+
+      <!-- ═══════════════ 剧情 ═══════════════ -->
+      <section class="screen story-screen" id="screen-story" aria-label="剧情">
+        <header class="story-top">
+          <button class="icon-btn story-menu-btn" data-action="open-menu" aria-label="打开菜单">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-menu"/></svg>
+          </button>
+          <div class="story-heading">
+            <span class="story-act" id="story-act">第一幕</span>
+            <span class="story-time" id="story-time">04:55</span>
+          </div>
+          <div class="story-top__actions">
+            <button class="icon-btn" data-action="backlog" aria-label="剧情回顾">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-history"/></svg>
+            </button>
+            <button class="icon-btn" id="btn-sound" data-action="toggle-sound" aria-label="关闭声音">
+              <svg class="icon icon-sound-on" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sound-on"/></svg>
+              <svg class="icon icon-sound-off" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sound-off"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="route-wrap" id="route-wrap">
+          <div class="route-track" aria-hidden="true">
+            <span class="route-track__base"></span>
+            <span class="route-track__fill" id="route-fill"></span>
+            <span class="route-train-marker" id="route-train-marker" aria-hidden="true"></span>
+          </div>
+          <ol class="route-stations" id="route-stations">
+            <li data-station="0"><i></i><span>新民</span></li>
+            <li data-station="1"><i></i><span>皇姑屯</span></li>
+            <li data-station="2"><i></i><span>三洞桥</span></li>
+            <li data-station="3"><i></i><span>奉天</span></li>
+          </ol>
+          <span class="route-branch" id="route-branch" hidden></span>
+        </div>
+
+        <div class="stage" id="stage">
+          <div class="art-stack" id="art-stack">
+            <!-- 车厢 -->
+            <div class="art-layer is-active" data-scene="train">
+              <svg class="art-svg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                  <linearGradient id="trainBg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#17201a"/>
+                    <stop offset=".55" stop-color="#0f1611"/>
+                    <stop offset="1" stop-color="#080b09"/>
+                  </linearGradient>
+                  <linearGradient id="trainSky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#24383b"/>
+                    <stop offset=".55" stop-color="#141f1f"/>
+                    <stop offset="1" stop-color="#090d0c"/>
+                  </linearGradient>
+                  <linearGradient id="trainCurtain" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#3b1e17"/>
+                    <stop offset=".7" stop-color="#24110d"/>
+                    <stop offset="1" stop-color="#160b09"/>
+                  </linearGradient>
+                  <radialGradient id="trainLampGlow" cx=".5" cy=".5" r=".5">
+                    <stop offset="0" stop-color="#e1ae67" stop-opacity=".55"/>
+                    <stop offset=".5" stop-color="#b87a3d" stop-opacity=".18"/>
+                    <stop offset="1" stop-color="#b87a3d" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="windowSheen" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#dff1e6" stop-opacity=".14"/>
+                    <stop offset=".35" stop-color="#dff1e6" stop-opacity=".02"/>
+                    <stop offset=".65" stop-color="#dff1e6" stop-opacity="0"/>
+                    <stop offset="1" stop-color="#dff1e6" stop-opacity=".05"/>
+                  </linearGradient>
+                  <clipPath id="trainWindowClip"><rect x="352" y="62" width="402" height="286" rx="3"/></clipPath>
+                </defs>
+                <rect width="800" height="480" fill="url(#trainBg)"/>
+                <g opacity=".22" stroke="#8d7955" stroke-width=".7">
+                  <path d="M335 0 V480 M760 0 V480 M0 48 H800 M0 390 H800"/>
+                  <path d="M0 24 H800" stroke-dasharray="2 6" opacity=".7"/>
+                </g>
+                <rect x="352" y="62" width="402" height="286" fill="url(#trainSky)"/>
+                <g clip-path="url(#trainWindowClip)">
+                  <g class="train-landscape">
+                    <path d="M352 286 C420 270 470 282 530 268 C610 250 690 272 754 250 L754 348 H352 Z" fill="#111a16"/>
+                    <path d="M352 308 C450 290 560 314 754 288 L754 348 H352 Z" fill="#0a100c"/>
+                    <g class="train-lights" fill="#d9a562">
+                      <circle cx="404" cy="297" r="2.6" opacity=".8"/>
+                      <circle cx="482" cy="289" r="2" opacity=".55"/>
+                      <circle cx="560" cy="302" r="3" opacity=".7"/>
+                      <circle cx="646" cy="284" r="2.2" opacity=".6"/>
+                      <circle cx="704" cy="298" r="2.6" opacity=".8"/>
+                    </g>
+                    <g class="train-smoke" fill="#b9c7ba" opacity=".08">
+                      <ellipse cx="590" cy="210" rx="94" ry="34"/>
+                      <ellipse cx="690" cy="178" rx="74" ry="26"/>
+                      <ellipse cx="632" cy="146" rx="52" ry="18"/>
+                    </g>
+                    <g stroke="#a8bdb1" opacity=".13">
+                      <path d="M370 292 V194 M466 280 V170 M586 286 V184 M690 272 V164" stroke-width="2"/>
+                      <path d="M370 223 h96 M466 208 h120 M586 224 h104" stroke-width=".8"/>
+                    </g>
+                  </g>
+                  <rect x="352" y="62" width="402" height="286" fill="url(#windowSheen)"/>
+                  <path d="M492 62 L560 348 M592 62 L660 348" stroke="#d3e4d8" stroke-width="10" opacity=".025"/>
+                </g>
+                <g fill="none" stroke="#5e4a31">
+                  <rect x="346" y="56" width="414" height="298" rx="5" stroke-width="7"/>
+                  <rect x="352" y="62" width="402" height="286" rx="2" stroke="#2f271c" stroke-width="2"/>
+                  <path d="M552 62 V348" stroke-width="5"/>
+                  <path d="M759 62 V348" stroke-width="2" opacity=".6"/>
+                  <path d="M352 202 H754" stroke-width=".8" opacity=".35"/>
+                </g>
+                <g fill="url(#trainCurtain)">
+                  <path d="M336 44 C366 84 344 142 366 190 C382 228 354 300 340 372 L282 392 C306 330 300 272 314 212 C326 158 306 100 336 44 Z" opacity=".94"/>
+                  <path d="M778 40 C752 106 770 150 758 208 C746 266 764 324 786 382 L800 388 L800 34 Z" opacity=".9"/>
+                  <path d="M322 58 C342 104 328 148 340 190 C350 228 330 282 318 330" fill="none" stroke="#6d3b2a" stroke-width="1.2" opacity=".35"/>
+                </g>
+                <g class="train-lamp">
+                  <path d="M188 0 V54" stroke="#4b3d2b" stroke-width="2"/>
+                  <path d="M164 54 H212 L202 74 H174 Z" fill="#6f5938"/>
+                  <ellipse cx="188" cy="76" rx="42" ry="9" fill="#e1b36c" opacity=".28"/>
+                  <circle cx="188" cy="78" r="78" fill="url(#trainLampGlow)"/>
+                  <circle cx="188" cy="76" r="4" fill="#f0c783"/>
+                </g>
+                <g class="train-cabin">
+                  <g opacity=".48" fill="none" stroke="#8e7753">
+                    <circle cx="284" cy="146" r="27" stroke-width="1.2"/>
+                    <circle cx="284" cy="146" r="32" stroke-width=".5" opacity=".55"/>
+                    <path d="M284 146 V130 M284 146 l12 7" stroke-width="1.3"/>
+                    <path d="M284 114 v5 M284 173 v5 M252 146 h5 M311 146 h5" stroke-width=".8"/>
+                  </g>
+                  <g fill="#d8c7a2" opacity=".2" font-family="'Noto Serif SC','Songti SC','SimSun',serif">
+                    <text x="318" y="118" font-size="9" letter-spacing="3">奉系专列</text>
+                    <text x="318" y="132" font-size="5" letter-spacing="2" font-family="Georgia,serif">MUKDEN 1928</text>
+                  </g>
+                  <g class="train-lamp train-lamp--center">
+                    <path d="M488 0 V66" stroke="#4b3d2b" stroke-width="2"/>
+                    <path d="M462 66 H514 L502 88 H474 Z" fill="#6b5434"/>
+                    <ellipse cx="488" cy="91" rx="48" ry="10" fill="#e1b36c" opacity=".24"/>
+                    <circle cx="488" cy="94" r="92" fill="url(#trainLampGlow)"/>
+                    <circle cx="488" cy="91" r="4.5" fill="#f2ca86"/>
+                  </g>
+                  <g fill="#070907" opacity=".94">
+                    <circle cx="276" cy="310" r="31"/>
+                    <path d="M214 480 C216 414 240 337 276 337 C314 337 336 414 342 480 Z"/>
+                    <path d="M242 292 Q276 281 310 292" fill="none" stroke="#5a4a32" stroke-width="2" opacity=".55"/>
+                    <path d="M252 291 Q258 270 276 268 Q294 270 300 291 Z" fill="#080a07" stroke="#4f412d" stroke-width="1.2" opacity=".9"/>
+                    <path d="M248 342 C258 329 294 327 306 342" fill="none" stroke="#5b4c36" stroke-width="1.4" opacity=".55"/>
+                    <path d="M224 384 C240 366 256 358 274 357" fill="none" stroke="#4f432f" stroke-width="1.2" opacity=".38"/>
+                    <circle cx="552" cy="322" r="26"/>
+                    <path d="M498 480 C502 425 522 348 552 348 C582 348 602 425 608 480 Z"/>
+                    <path d="M520 303 Q552 290 584 303 L580 313 Q552 304 524 313 Z" fill="#080a07" stroke="#4f412d" stroke-width="1.2" opacity=".9"/>
+                    <path d="M530 350 C540 339 568 338 578 350" fill="none" stroke="#5b4c36" stroke-width="1.3" opacity=".5"/>
+                    <path d="M594 377 C606 364 616 360 626 358" fill="none" stroke="#4f432f" stroke-width="1.1" opacity=".32"/>
+                    <circle cx="562" cy="330" r="1.4" fill="#d1874f" opacity=".9"/>
+                  </g>
+                  <g class="train-smoke-wisp" fill="none" stroke="#c9c1ad" stroke-width="1.2" opacity=".12">
+                    <path d="M572 324 C582 300 566 288 578 268 C588 252 580 238 588 224"/>
+                    <path d="M582 324 C592 306 580 296 590 280" opacity=".6"/>
+                  </g>
+                  <g fill="#17130e" stroke="#5a4933" stroke-width="1">
+                    <path d="M398 424 C402 410 426 407 440 414 C450 420 449 431 441 436 L400 436 C393 432 394 428 398 424 Z"/>
+                    <path d="M402 414 C408 405 426 405 434 413" fill="none"/>
+                    <path d="M440 418 C451 417 455 423 453 427" fill="none"/>
+                  </g>
+                  <g fill="none" stroke="#9a7d51" opacity=".48">
+                    <path d="M392 424 H446" stroke-width=".7"/>
+                    <path d="M414 421 v6 M424 420 v7" stroke-width=".9"/>
+                  </g>
+                  <g opacity=".55">
+                    <path d="M304 398 C330 390 360 392 382 402" fill="none" stroke="#a98b5c" stroke-width=".8"/>
+                    <path d="M304 398 l-8 9 M382 402 l8 8" fill="none" stroke="#a98b5c" stroke-width=".7"/>
+                  </g>
+                </g>
+                <g>
+                  <path d="M0 408 C210 386 588 386 800 410 L800 480 H0 Z" fill="#0b0907"/>
+                  <path d="M0 408 C210 386 588 386 800 410" fill="none" stroke="#6d5436" stroke-width="1" opacity=".4"/>
+                  <g fill="#17130e" stroke="#5a4933" stroke-width="1">
+                    <path d="M524 403 C528 385 562 381 578 391 C590 399 588 414 578 421 L526 421 C518 415 520 408 524 403 Z"/>
+                    <path d="M529 393 C536 381 562 381 571 392" fill="none"/>
+                    <path d="M578 398 C593 396 598 403 596 408" fill="none"/>
+                  </g>
+                  <ellipse cx="552" cy="388" rx="17" ry="4" fill="none" stroke="#7b6242" opacity=".45"/>
+                  <path d="M640 405 C655 399 681 400 693 407 L693 419 L640 419 Z" fill="#19140f" stroke="#57472f" stroke-width=".8"/>
+                  <path d="M696 407 C704 407 706 411 706 414" fill="none" stroke="#6d5838" stroke-width="2"/>
+                  <g opacity=".5">
+                    <circle cx="438" cy="419" r="17" fill="none" stroke="#a18558" stroke-width="1.5"/>
+                    <circle cx="438" cy="419" r="12" fill="none" stroke="#715d3d" stroke-width=".7"/>
+                    <path d="M438 410 V420 L446 424" fill="none" stroke="#a18558" stroke-width="1.2"/>
+                  </g>
+                  <path d="M0 446 C190 432 600 436 800 448 L800 480 H0 Z" fill="#070604" opacity=".7"/>
+                </g>
+                <g opacity=".2" fill="#cab88f" font-family="Georgia, serif" font-size="13" letter-spacing="3">
+                  <text x="38" y="74">京奉</text>
+                  <text x="38" y="94" font-size="8" letter-spacing="2">CHINGFENG</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 站台 -->
+            <div class="art-layer" data-scene="station">
+              <svg class="art-svg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                  <linearGradient id="stationSky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#142226"/>
+                    <stop offset=".5" stop-color="#1b2421"/>
+                    <stop offset="1" stop-color="#3a2c20"/>
+                  </linearGradient>
+                  <radialGradient id="stationLamp" cx=".5" cy=".5" r=".5">
+                    <stop offset="0" stop-color="#ffdca0" stop-opacity=".62"/>
+                    <stop offset=".35" stop-color="#d99b4b" stop-opacity=".24"/>
+                    <stop offset="1" stop-color="#b7772e" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="stationFog" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#b7b6a2" stop-opacity="0"/>
+                    <stop offset="1" stop-color="#b7b6a2" stop-opacity=".16"/>
+                  </linearGradient>
+                  <linearGradient id="stationDoor" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#e7c98c" stop-opacity=".7"/>
+                    <stop offset="1" stop-color="#8c6331" stop-opacity=".08"/>
+                  </linearGradient>
+                </defs>
+                <rect width="800" height="480" fill="url(#stationSky)"/>
+                <circle cx="625" cy="352" r="180" fill="#7e4d2d" opacity=".14"/>
+                <g fill="#0a0e0d">
+                  <path d="M0 300 L112 262 L220 300 L220 372 L0 372 Z"/>
+                  <path d="M44 272 L92 246 L148 268 L148 300 L44 300 Z"/>
+                  <rect x="52" y="286" width="10" height="24" fill="#87673f" opacity=".3"/>
+                  <rect x="112" y="286" width="10" height="24" fill="#87673f" opacity=".3"/>
+                </g>
+                <g opacity=".55" fill="none" stroke="#5d4a33">
+                  <path d="M0 84 L336 92 L770 132" stroke-width="3"/>
+                  <path d="M0 104 L338 112 L770 152" stroke-width="1"/>
+                  <path d="M96 104 V300 M330 112 V302 M560 132 V312 M720 146 V318" stroke-width="7" opacity=".7"/>
+                  <path d="M120 118 L330 112 M354 118 L560 132" stroke-width="1"/>
+                </g>
+                <g class="station-lamps">
+                  <g>
+                    <path d="M174 116 V190" stroke="#3f3527" stroke-width="2"/>
+                    <path d="M158 190 H190 L184 208 H164 Z" fill="#6f5837"/>
+                    <circle cx="174" cy="214" r="10" fill="#f5cf8d" opacity=".8"/>
+                    <circle cx="174" cy="212" r="78" fill="url(#stationLamp)"/>
+                  </g>
+                  <g>
+                    <path d="M430 126 V220" stroke="#3f3527" stroke-width="2"/>
+                    <path d="M414 220 H446 L440 240 H420 Z" fill="#6f5837"/>
+                    <circle cx="430" cy="246" r="8" fill="#f5cf8d" opacity=".65"/>
+                    <circle cx="430" cy="244" r="64" fill="url(#stationLamp)" opacity=".8"/>
+                  </g>
+                  <g>
+                    <path d="M690 146 V230" stroke="#3f3527" stroke-width="2"/>
+                    <path d="M674 230 H706 L700 248 H680 Z" fill="#6f5837"/>
+                    <circle cx="690" cy="252" r="7" fill="#f5cf8d" opacity=".55"/>
+                    <circle cx="690" cy="250" r="54" fill="url(#stationLamp)" opacity=".7"/>
+                  </g>
+                </g>
+                <g>
+                  <rect x="530" y="212" width="270" height="160" rx="4" fill="#1b2422"/>
+                  <rect x="530" y="212" width="270" height="22" fill="#0e1513"/>
+                  <rect x="530" y="200" width="270" height="12" fill="#2b3631" opacity=".7"/>
+                  <g fill="#d6ad6a" opacity=".7">
+                    <rect x="556" y="252" width="34" height="46" rx="2"/>
+                    <rect x="606" y="252" width="34" height="46" rx="2"/>
+                    <rect x="656" y="252" width="34" height="46" rx="2"/>
+                    <rect x="706" y="252" width="34" height="46" rx="2"/>
+                    <rect x="756" y="252" width="28" height="46" rx="2"/>
+                  </g>
+                  <g fill="#0b1110" opacity=".8">
+                    <path d="M548 298 h50 v74 h-50 z"/>
+                    <path d="M618 298 h50 v74 h-50 z"/>
+                    <path d="M688 298 h50 v74 h-50 z"/>
+                    <path d="M758 298 h42 v74 h-42 z"/>
+                  </g>
+                  <rect x="552" y="210" width="44" height="190" fill="url(#stationDoor)" opacity=".75"/>
+                  <path d="M552 210 H596" stroke="#d8b477" stroke-width="2" opacity=".6"/>
+                  <circle cx="540" cy="340" r="4" fill="#e6b56e" opacity=".8"/>
+                  <circle cx="800" cy="340" r="4" fill="#e6b56e" opacity=".6"/>
+                </g>
+                <g>
+                  <path d="M330 244 V302" stroke="#3a3022" stroke-width="3"/>
+                  <rect x="288" y="224" width="86" height="28" rx="2" fill="#1f2420" stroke="#5f5138" stroke-width=".8"/>
+                  <text x="299" y="243" fill="#d4c39f" font-size="16" font-family="'Noto Serif SC','Songti SC','SimSun',serif" letter-spacing="2" opacity=".72">皇姑屯</text>
+                  <g fill="#0a0e0c">
+                    <circle cx="410" cy="290" r="7"/>
+                    <path d="M403 299 h14 l5 42 h-24 z"/>
+                    <path d="M404 304 l-10 26 M416 304 l10 24" stroke="#0a0e0c" stroke-width="4"/>
+                    <path d="M420 310 l16 -32" stroke="#0a0e0c" stroke-width="2.5"/>
+                  </g>
+                </g>
+                <path d="M0 360 H800 V480 H0 Z" fill="#14130f"/>
+                <path d="M0 360 H800" stroke="#6c5837" stroke-width="1" opacity=".6"/>
+                <g opacity=".35" stroke="#a48a5e">
+                  <path d="M0 382 H800 M0 412 H800 M0 446 H800" stroke-width=".6"/>
+                  <path d="M0 360 L120 480 M190 360 L310 480 M540 360 L660 480" stroke-width=".8"/>
+                </g>
+                <g class="station-fog" fill="url(#stationFog)">
+                  <rect x="0" y="316" width="800" height="72"/>
+                  <rect x="0" y="368" width="800" height="52" opacity=".7"/>
+                </g>
+                <rect width="800" height="480" fill="#090c0a" opacity=".08"/>
+              </svg>
+            </div>
+
+            <!-- 三洞桥 -->
+            <div class="art-layer" data-scene="bridge">
+              <svg class="art-svg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bridgeSky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#0a1319"/>
+                    <stop offset=".5" stop-color="#34322a"/>
+                    <stop offset="1" stop-color="#966a45"/>
+                  </linearGradient>
+                  <radialGradient id="bridgeSun" cx=".5" cy=".5" r=".5">
+                    <stop offset="0" stop-color="#e5a364" stop-opacity=".5"/>
+                    <stop offset=".4" stop-color="#b06b3b" stop-opacity=".18"/>
+                    <stop offset="1" stop-color="#b06b3b" stop-opacity="0"/>
+                  </radialGradient>
+                  <radialGradient id="bridgeHeadlight" cx=".5" cy=".5" r=".5">
+                    <stop offset="0" stop-color="#ffe2aa" stop-opacity=".5"/>
+                    <stop offset=".35" stop-color="#c58a4e" stop-opacity=".2"/>
+                    <stop offset="1" stop-color="#c58a4e" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="bridgeFog" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#bfb8a3" stop-opacity=".2"/>
+                    <stop offset="1" stop-color="#bfb8a3" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <rect width="800" height="480" fill="url(#bridgeSky)"/>
+                <g class="bridge-sky-detail">
+                  <ellipse cx="400" cy="170" rx="330" ry="150" fill="#c08b5b" opacity=".07"/>
+                  <ellipse cx="410" cy="208" rx="210" ry="62" fill="#e0b47c" opacity=".05"/>
+                  <path d="M0 92 C130 72 220 104 340 88 C470 70 620 100 800 76 V150 C650 170 500 144 370 162 C250 178 120 158 0 172 Z" fill="#151914" opacity=".42"/>
+                  <path d="M0 124 C160 106 300 132 450 116 C590 102 690 116 800 108" fill="none" stroke="#a88c65" stroke-width=".8" opacity=".16"/>
+                  <g fill="#b6a58a" opacity=".12">
+                    <ellipse cx="260" cy="70" rx="90" ry="24"/>
+                    <ellipse cx="210" cy="48" rx="54" ry="16"/>
+                    <ellipse cx="604" cy="84" rx="110" ry="26"/>
+                  </g>
+                  <path d="M310 128 C300 90 316 66 306 34 M318 128 C330 96 318 76 328 48" stroke="#a59478" stroke-width="1.2" fill="none" opacity=".12"/>
+                </g>
+                <circle cx="598" cy="348" r="210" fill="url(#bridgeSun)"/>
+                <g fill="#131712" opacity=".7">
+                  <path d="M0 350 L44 340 L64 346 L96 330 L130 342 L170 332 L212 346 L252 338 L300 348 L340 336 L382 344 L430 330 L480 340 L530 326 L590 338 L640 328 L700 340 L760 330 L800 336 V392 H0 Z"/>
+                  <path d="M0 376 H800 V400 H0Z"/>
+                  <path d="M704 292 V348 M710 306 h18 v34 h-18z" opacity=".8"/>
+                </g>
+                <g fill="none" stroke="#1b1a15" stroke-width="8">
+                  <path d="M0 250 H800"/>
+                  <path d="M0 214 H800" stroke-width="3"/>
+                  <path d="M160 250 V360 M636 250 V360"/>
+                  <path d="M120 360 H230 M580 360 H690"/>
+                </g>
+                <g fill="none" stroke="#292721" stroke-width="4">
+                  <path d="M0 250 L120 150 L300 250 L480 150 L660 250 L800 170"/>
+                  <path d="M0 150 L120 250 L300 150 L480 250 L660 150 L800 250"/>
+                  <path d="M0 250 L160 250 L160 360 M636 250 L636 360 M800 250 L636 250"/>
+                  <path d="M0 150 H800" stroke-width="2"/>
+                </g>
+                <g fill="none" stroke="#3d3528" stroke-width="1.2" opacity=".8">
+                  <path d="M0 232 H800 M0 268 H800"/>
+                  <path d="M20 232 L48 268 M104 232 L132 268 M188 232 L216 268 M272 232 L300 268 M356 232 L384 268 M440 232 L468 268 M524 232 L552 268 M608 232 L636 268 M692 232 L720 268 M776 232 L800 260"/>
+                </g>
+                <g fill="none" stroke="#6b583a" stroke-width="1.8" opacity=".5">
+                  <path d="M0 250 L120 150 L300 250 L480 150 L660 250 L800 170"/>
+                  <path d="M120 150 V250 M300 250 V150 M480 150 V250 M660 250 V150"/>
+                  <path d="M0 232 H800" stroke-width="2.4"/>
+                </g>
+                <g>
+                  <path d="M0 300 H800 V480 H0 Z" fill="#0b0c09"/>
+                  <path d="M0 300 H800" stroke="#6a5638" stroke-width="1" opacity=".4"/>
+                  <path d="M300 300 V480 M500 300 V480" stroke="#090a08" stroke-width="30"/>
+                  <path d="M320 300 Q400 344 480 300 L480 330 Q400 372 320 330 Z" fill="#18160f" opacity=".8"/>
+                  <g stroke="#6c5a3d" stroke-width=".8" opacity=".4">
+                    <path d="M0 318 H800"/>
+                    <path d="M0 334 H800"/>
+                    <path d="M352 338 L400 354 L448 338" fill="none"/>
+                  </g>
+                  <path d="M0 442 H800" stroke="#817052" stroke-width="1" opacity=".35"/>
+                  <path d="M0 408 L120 480 M800 408 L680 480" stroke="#5a4a34" stroke-width="1" opacity=".5"/>
+                </g>
+                <g class="bridge-underpass">
+                  <path d="M312 480 V354 Q400 292 488 354 V480" fill="none" stroke="#6f5b3e" stroke-width="2.4" opacity=".42"/>
+                  <path d="M326 480 V360 Q400 304 474 360 V480" fill="#080a08" opacity=".55"/>
+                  <ellipse cx="400" cy="420" rx="136" ry="82" fill="url(#bridgeHeadlight)" opacity=".55"/>
+                  <circle cx="400" cy="418" r="4.5" fill="#f6d296" opacity=".7"/>
+                  <g stroke="#6b5a3e" stroke-width="1" opacity=".3">
+                    <path d="M330 480 L354 404 M470 480 L446 404"/>
+                    <path d="M356 480 L370 430 M444 480 L430 430"/>
+                    <path d="M312 390 H488 M312 428 H488" stroke-dasharray="7 10"/>
+                  </g>
+                  <path d="M270 480 L304 374 M530 480 L496 374" stroke="#171710" stroke-width="8" opacity=".8"/>
+                </g>
+                <g class="bridge-fog" fill="url(#bridgeFog)">
+                  <rect x="0" y="270" width="800" height="100"/>
+                  <rect x="0" y="340" width="800" height="70" opacity=".6"/>
+                </g>
+                <circle cx="700" cy="238" r="3" fill="#d06a4c" opacity=".8"/>
+                <circle cx="700" cy="238" r="14" fill="#d06a4c" opacity=".08"/>
+                <g fill="#d9c7a0" opacity=".2" font-family="Georgia, serif" font-size="9" letter-spacing="3">
+                  <text x="32" y="440">SANKUNG BRIDGE</text>
+                  <text x="32" y="456">05:23</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 公路 -->
+            <div class="art-layer" data-scene="road">
+              <svg class="art-svg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                  <linearGradient id="roadSky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#69726d"/>
+                    <stop offset=".45" stop-color="#9b9077"/>
+                    <stop offset=".75" stop-color="#b49a75"/>
+                    <stop offset="1" stop-color="#6f5a42"/>
+                  </linearGradient>
+                  <radialGradient id="roadSun" cx=".5" cy=".5" r=".5">
+                    <stop offset="0" stop-color="#ffe8b6" stop-opacity=".8"/>
+                    <stop offset=".3" stop-color="#efc287" stop-opacity=".25"/>
+                    <stop offset="1" stop-color="#efc287" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="roadFog" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#ddd4bd" stop-opacity="0"/>
+                    <stop offset=".5" stop-color="#ddd4bd" stop-opacity=".2"/>
+                    <stop offset="1" stop-color="#ddd4bd" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="roadSurface" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#4f4a3b"/>
+                    <stop offset="1" stop-color="#1a1914"/>
+                  </linearGradient>
+                </defs>
+                <rect width="800" height="480" fill="url(#roadSky)"/>
+                <g class="road-dawn" opacity=".8">
+                  <ellipse cx="400" cy="208" rx="270" ry="94" fill="#e6d2ad" opacity=".12"/>
+                  <ellipse cx="400" cy="220" rx="90" ry="24" fill="#f7e5bd" opacity=".16"/>
+                  <path d="M0 140 C120 122 220 154 330 136 C450 116 600 148 800 126 V196 C640 214 470 188 330 206 C210 220 90 204 0 216 Z" fill="#c8c2b1" opacity=".055"/>
+                  <path d="M0 162 C180 146 360 176 520 158 C640 144 720 158 800 150" fill="none" stroke="#e9dcc2" stroke-width=".8" opacity=".13"/>
+                </g>
+                <circle cx="572" cy="286" r="180" fill="url(#roadSun)"/>
+                <circle cx="572" cy="286" r="22" fill="#f8e7be" opacity=".38"/>
+                <g class="road-middle" fill="#4a4b3d" opacity=".65">
+                  <path d="M0 238 C120 224 230 236 330 226 C450 212 620 236 800 220 V286 H0Z"/>
+                  <path d="M0 264 C180 250 360 270 540 252 C650 242 730 252 800 246 V294 H0Z" fill="#3a3c31" opacity=".7"/>
+                  <path d="M0 276 H800" stroke="#b6a98d" stroke-width=".8" opacity=".18"/>
+                </g>
+                <g fill="#3d4038" opacity=".55">
+                  <path d="M0 292 C90 282 150 290 220 280 L280 292 L360 286 L430 294 L520 284 L600 292 L800 282 V330 H0Z"/>
+                  <path d="M620 250 V292 M628 258 h22 v34 h-22z"/>
+                  <path d="M0 318 H800 V340 H0Z" opacity=".5"/>
+                </g>
+                <g fill="#2a2b23" opacity=".9">
+                  <path d="M0 336 C150 322 630 322 800 338 L800 480 H0 Z"/>
+                  <path d="M344 338 C360 364 382 428 390 480 H310 C322 424 332 370 344 338Z" fill="#5b5442" opacity=".35"/>
+                  <path d="M354 338 C368 364 388 428 396 480 H380 C376 420 362 366 350 338Z" fill="#8e846d" opacity=".25"/>
+                </g>
+                <g fill="#171b14" opacity=".95">
+                  <path d="M0 480 L0 352 C70 346 120 340 190 334 L212 480 Z"/>
+                  <path d="M800 480 L800 348 C720 342 650 336 590 330 L566 480 Z"/>
+                </g>
+                <g stroke="#20251a" stroke-width="2" opacity=".9">
+                  <path d="M26 480 L46 350 M92 480 L104 342 M158 480 L166 338 M224 480 L230 342 M292 480 L296 350"/>
+                  <path d="M774 480 L754 346 M708 480 L694 338 M642 480 L630 330 M576 480 L566 344 M506 480 L500 354"/>
+                </g>
+                <g stroke="#8d866d" stroke-width="1" opacity=".3">
+                  <path d="M40 354 l22 -30 M70 354 l16 -18 M110 346 l18 -26 M150 344 l10 -14 M690 342 l-18 -26 M730 346 l-10 -14 M620 336 l-24 -30 M660 340 l-12 -16"/>
+                </g>
+                <g class="road-car" transform="translate(400 392) scale(0.7) translate(-400 -392)">
+                  <ellipse cx="400" cy="420" rx="122" ry="14" fill="#15140f" opacity=".55"/>
+                  <path d="M306 388 C318 354 352 342 400 342 C448 342 482 354 494 388 L486 414 C478 426 456 432 400 432 C344 432 322 426 314 414 Z" fill="#141713" stroke="#2c2f26" stroke-width="1"/>
+                  <path d="M334 372 C346 352 366 348 400 348 C434 348 454 352 466 372 L454 388 H346 Z" fill="#2d332d" opacity=".8"/>
+                  <path d="M348 376 H452" stroke="#9a8f72" stroke-width=".7" opacity=".3"/>
+                  <rect x="316" y="398" width="18" height="8" rx="3" fill="#a43a2c"/>
+                  <rect x="466" y="398" width="18" height="8" rx="3" fill="#a43a2c"/>
+                  <circle cx="330" cy="404" r="12" fill="#c0523d" opacity=".15"/>
+                  <circle cx="470" cy="404" r="12" fill="#c0523d" opacity=".15"/>
+                  <path d="M360 432 v10 M440 432 v10" stroke="#0b0d09" stroke-width="8"/>
+                </g>
+                <g class="road-dust" fill="#c5b9a0" opacity=".12">
+                  <ellipse cx="260" cy="428" rx="90" ry="18"/>
+                  <ellipse cx="540" cy="436" rx="74" ry="14"/>
+                </g>
+                <g class="road-grass" stroke="#20251a" stroke-width="2.2" opacity=".9">
+                  <path d="M286 480 C292 430 288 392 300 356 M296 480 C300 438 296 402 308 372 M306 480 C306 444 304 418 314 390"/>
+                  <path d="M514 480 C508 426 514 388 502 352 M504 480 C500 438 506 404 494 374 M494 480 C492 446 496 420 486 392"/>
+                  <path d="M286 438 l-12 -16 M296 414 l-9 -18 M514 436 l12 -18 M504 410 l9 -16" stroke-width="1.2"/>
+                </g>
+                <g fill="#2b3023" opacity=".7">
+                  <path d="M276 480 L276 402 L292 390 L292 480 Z"/>
+                  <path d="M524 480 L524 400 L508 388 L508 480 Z"/>
+                </g>
+                <g class="road-fog" fill="url(#roadFog)">
+                  <rect x="0" y="300" width="800" height="90"/>
+                  <rect x="0" y="360" width="800" height="80" opacity=".7"/>
+                </g>
+                <g fill="#d6c9ae" opacity=".25" font-family="Georgia, serif" font-size="9" letter-spacing="3">
+                  <text x="32" y="456">MUKDEN · OUTSKIRTS</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 爆炸 -->
+            <div class="art-layer" data-scene="blast">
+              <svg class="art-svg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                  <radialGradient id="blastGlow" cx=".5" cy=".5" r=".5">
+                    <stop offset="0" stop-color="#fff5d9" stop-opacity=".95"/>
+                    <stop offset=".12" stop-color="#ffd690" stop-opacity=".9"/>
+                    <stop offset=".32" stop-color="#e77438" stop-opacity=".75"/>
+                    <stop offset=".6" stop-color="#9e2f1f" stop-opacity=".36"/>
+                    <stop offset="1" stop-color="#4a110b" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="blastSky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#170d09"/>
+                    <stop offset=".55" stop-color="#31130d"/>
+                    <stop offset="1" stop-color="#0b0907"/>
+                  </linearGradient>
+                  <linearGradient id="smoke" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#2b231d" stop-opacity=".1"/>
+                    <stop offset="1" stop-color="#0b0907" stop-opacity=".9"/>
+                  </linearGradient>
+                </defs>
+                <rect width="800" height="480" fill="url(#blastSky)"/>
+                <circle cx="400" cy="250" r="330" fill="url(#blastGlow)"/>
+                <g fill="#0a0907" opacity=".85">
+                  <path d="M0 330 C90 302 160 318 220 300 L300 330 L380 306 L470 334 L560 308 L650 336 L800 310 V480 H0Z"/>
+                  <path d="M0 250 H180 L220 280 L300 250 L380 292 L430 236 L500 270 L570 230 L650 276 L720 240 L800 280 V350 H0Z" opacity=".7"/>
+                </g>
+                <g class="blast-debris" stroke="#d9a46f" stroke-width="2" opacity=".65">
+                  <path d="M300 240 L180 120 M360 220 L300 40 M430 220 L500 48 M470 250 L620 110 M330 270 L140 330 M480 280 L690 330"/>
+                  <path d="M280 300 l-18 -50 M520 292 l30 -64 M380 320 l-10 -76 M450 330 l18 -60" stroke-width="1"/>
+                </g>
+                <g class="blast-smoke" fill="#15110e" opacity=".9">
+                  <ellipse cx="400" cy="140" rx="150" ry="96"/>
+                  <ellipse cx="300" cy="92" rx="110" ry="64"/>
+                  <ellipse cx="508" cy="82" rx="118" ry="70"/>
+                  <ellipse cx="400" cy="48" rx="82" ry="48"/>
+                  <rect x="0" y="0" width="800" height="190" fill="url(#smoke)" opacity=".55"/>
+                </g>
+                <g fill="#1a120d" opacity=".8">
+                  <path d="M0 400 H800 V480 H0Z"/>
+                  <path d="M0 400 C150 386 240 394 330 410 L300 480 H0Z"/>
+                  <path d="M800 404 C650 390 560 398 470 414 L510 480 H800Z"/>
+                </g>
+                <g opacity=".5" stroke="#d3a064" stroke-width="1" fill="none">
+                  <path d="M360 300 Q400 276 440 300 M340 320 Q400 288 460 320" />
+                </g>
+                <rect width="800" height="480" fill="#0a0807" opacity=".18"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="stage-tint" aria-hidden="true"></div>
+          <div class="stage-frame" aria-hidden="true"></div>
+          <div class="stage-topline">
+            <span id="stage-act-name">夜行</span>
+            <span class="stage-date">1928.06.04</span>
+          </div>
+          <div class="stage-caption">
+            <span class="stage-caption__dot" aria-hidden="true"></span>
+            <div>
+              <b id="story-place">大帅专列</b>
+              <small id="story-branch">京奉线 · 东行</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="dialogue-zone" id="dialogue-zone">
+          <div class="speaker-tab" id="speaker-tab" hidden>
+            <span id="speaker-name"></span>
+            <i aria-hidden="true"></i>
+          </div>
+          <div class="dialogue-panel" id="dialogue-panel">
+            <span class="dialogue-gutter" aria-hidden="true">京奉</span>
+            <div class="line-scroll" id="line-scroll">
+              <p class="line-text" id="line-text"></p>
+            </div>
+            <div class="continue-hint" id="continue-hint">
+              <span>轻触继续</span>
+              <i class="chevron" aria-hidden="true"></i>
+            </div>
+            <div class="choices" id="choices" hidden>
+              <div class="choices-heading">
+                <span id="choices-prompt">你要如何回应？</span>
+                <i aria-hidden="true"></i>
+              </div>
+              <div class="choice-list" id="choice-list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="auto-badge" id="auto-badge" hidden><i></i>AUTO</div>
+        <div class="fx-flash" id="fx-flash" aria-hidden="true"></div>
+      </section>
+
+      <!-- ═══════════════ 结局 ═══════════════ -->
+      <section class="screen ending-screen" id="screen-ending" aria-label="结局">
+        <header class="ending-top">
+          <button class="icon-btn" data-action="ending-exit" aria-label="返回">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-back"/></svg>
+          </button>
+          <span class="ending-kicker">EPILOGUE · 结局档案</span>
+          <span class="ending-number" id="ending-number">壹 / 肆</span>
+        </header>
+        <div class="ending-scroll" id="ending-scroll">
+          <article class="ending-dossier" id="ending-dossier">
+            <div class="dossier-line" aria-hidden="true"></div>
+            <header class="dossier-head">
+              <div class="dossier-heading">
+                <span class="ending-label" id="ending-label">史实结局</span>
+                <h2 class="ending-title" id="ending-title">崩坏：京奉铁道</h2>
+              </div>
+              <div class="ending-seal" aria-hidden="true"><span>终</span></div>
+            </header>
+            <p class="ending-summary" id="ending-summary"></p>
+            <div class="dossier-rule" aria-hidden="true"><span></span></div>
+            <div class="ending-body" id="ending-body"></div>
+            <footer class="dossier-foot">
+              <span id="ending-page">01 / 03</span>
+              <span class="dossier-sign">京奉铁路 · 民国十七年</span>
+            </footer>
+          </article>
+          <div class="ending-actions">
+            <button class="btn btn-dark" id="ending-next">翻到下一页</button>
+            <button class="btn btn-ghost-dark" id="ending-share">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-share"/></svg>
+              分享这段结局
+            </button>
+            <div class="ending-final" id="ending-final" hidden>
+              <button class="btn btn-dark" id="ending-replay">再走一趟</button>
+              <button class="btn btn-ghost-dark" id="ending-home">返回标题</button>
+            </div>
+          </div>
+          <p class="ending-note">四条路，四种命运。历史只有一条。</p>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 档案 / 图鉴 ═══════════════ -->
+      <section class="screen codex-screen" id="screen-codex" aria-label="档案">
+        <header class="codex-top">
+          <button class="icon-btn" data-action="codex-back" aria-label="返回">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-back"/></svg>
+          </button>
+          <div class="codex-title">
+            <span>ARCHIVE</span>
+            <h2>档案室</h2>
+          </div>
+          <span class="codex-count" id="codex-count">0 / 4</span>
+        </header>
+        <div class="codex-tabs" role="tablist" aria-label="档案分类">
+          <button role="tab" data-tab="background">时代背景</button>
+          <button role="tab" data-tab="people">人物</button>
+          <button role="tab" data-tab="endings" aria-selected="true">结局</button>
+        </div>
+        <div class="codex-scroll" id="codex-scroll">
+          <div class="codex-content" id="codex-content"></div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ 浮层 ═══════════════ -->
+      <div class="overlay" id="overlay" hidden>
+        <div class="overlay-scrim" data-close-sheet></div>
+        <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="菜单">
+          <div class="sheet-handle" aria-hidden="true"></div>
+          <div class="sheet-content" id="sheet-content"></div>
+        </section>
+      </div>
+
+      <div class="opening" id="opening" hidden>
+        <div class="opening-inner">
+          <span class="opening-date">1928 · 06 · 04</span>
+          <h2>夜行</h2>
+          <p>京奉铁路 · 皇姑屯方向</p>
+          <span class="opening-hint">轻触进入</span>
+        </div>
+      </div>
+
+      <div class="toast" id="toast" role="status"></div>
+      <div class="sr-only" id="sr-live" aria-live="polite"></div>
+
+      <!-- 图标 -->
+      <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-menu" viewBox="0 0 24 24">
+          <path d="M4 7h16M4 12h10M4 17h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="18" cy="12" r="1.4" fill="currentColor"/>
+        </symbol>
+        <symbol id="icon-gear" viewBox="0 0 24 24">
+          <path d="M19.4 13a7.7 7.7 0 0 0 0-2l2-1.6-2-3.4-2.4 1a7.5 7.5 0 0 0-1.7-1L15 3.5h-4L10.6 6a7.5 7.5 0 0 0-1.7 1l-2.4-1-2 3.4L6.6 11a7.7 7.7 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7.5 7.5 0 0 0 1.7 1l.4 2.5h4l.4-2.5a7.5 7.5 0 0 0 1.7-1l2.4 1 2-3.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="3.1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </symbol>
+        <symbol id="icon-history" viewBox="0 0 24 24">
+          <path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 8v4.5l3 1.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="icon-back" viewBox="0 0 24 24">
+          <path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24">
+          <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="icon-sound-on" viewBox="0 0 24 24">
+          <path d="M4 9.5h3.2L12 5.8v12.4L7.2 14.5H4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M15.5 9.2a4 4 0 0 1 0 5.6M18 7a7.4 7.4 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="icon-sound-off" viewBox="0 0 24 24">
+          <path d="M4 9.5h3.2L12 5.8v12.4L7.2 14.5H4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M16 9.5l4 5M20 9.5l-4 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="icon-share" viewBox="0 0 24 24">
+          <circle cx="6.5" cy="12" r="2.2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="17.5" cy="6.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="17.5" cy="17.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M8.5 10.9l6.8-3.6M8.5 13.1l6.8 3.6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+          <path d="M5 12.5l4.5 4.5L19 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="icon-lock" viewBox="0 0 24 24">
+          <rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M8 10V7.5a4 4 0 0 1 8 0V10" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        </symbol>
+        <symbol id="icon-restart" viewBox="0 0 24 24">
+          <path d="M5 9a8 8 0 1 1-.6 5.5M5 4.5V9h4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="icon-home" viewBox="0 0 24 24">
+          <path d="M4.5 10.5L12 4l7.5 6.5V20h-5v-5h-5v5h-5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="icon-chevron" viewBox="0 0 24 24">
+          <path d="M8 10l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+      </svg>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

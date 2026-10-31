@@ -1,0 +1,583 @@
+/* ══════════════════════════════════════════════════════════
+   codex.css — 档案室 / 人物 / 结局图鉴 / 时代背景
+   ══════════════════════════════════════════════════════════ */
+
+.codex-screen {
+  background:
+    radial-gradient(90% 48% at 50% 0%, rgba(47, 58, 45, 0.28), transparent 68%),
+    var(--ink-900);
+  overflow: hidden;
+}
+
+.codex-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex: 0 0 auto;
+  padding: calc(11px + env(safe-area-inset-top)) 18px 0;
+  min-height: calc(52px + env(safe-area-inset-top));
+}
+
+.codex-title { text-align: center; line-height: 1; }
+
+.codex-title span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--gold-dim);
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.3em;
+}
+
+.codex-title h2 {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+}
+
+.codex-count {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.codex-tabs {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex: 0 0 auto;
+  margin-top: 10px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.codex-tabs button {
+  position: relative;
+  min-height: 42px;
+  color: var(--fog);
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  transition: color 180ms;
+}
+
+.codex-tabs button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 0;
+  height: 1px;
+  background: var(--red-bright);
+  transform: translateX(-50%);
+  transition: width 220ms var(--ease-out);
+}
+
+.codex-tabs button[aria-selected="true"] { color: var(--paper); }
+.codex-tabs button[aria-selected="true"]::after { width: 32px; }
+.codex-tabs button:hover { color: var(--paper-soft); }
+
+.codex-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 4px 18px calc(26px + env(safe-area-inset-bottom));
+  scrollbar-width: none;
+}
+
+.codex-scroll::-webkit-scrollbar { display: none; }
+
+.codex-content { animation: codex-in 360ms var(--ease-out) both; }
+
+@keyframes codex-in {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: none; }
+}
+
+.codex-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 0 12px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.codex-section-head h3 {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.codex-section-head span {
+  color: var(--fog-dim);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+.codex-intro {
+  padding: 18px 0 4px;
+  color: var(--fog);
+  font-family: var(--serif);
+  font-size: 12px;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+
+/* ── 人物 ─────────────────────────────────────────────── */
+.person-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+}
+
+.person-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 14px;
+  padding: 15px 14px 14px;
+  background:
+    linear-gradient(120deg, rgba(185, 154, 102, 0.075), rgba(185, 154, 102, 0.015));
+  border: 1px solid rgba(185, 154, 102, 0.16);
+  overflow: hidden;
+}
+
+.person-card::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid rgba(185, 154, 102, 0.3);
+  border-right: 1px solid rgba(185, 154, 102, 0.3);
+}
+
+.person-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 72px;
+  background:
+    radial-gradient(80% 60% at 50% 30%, rgba(185, 154, 102, 0.18), transparent),
+    #111610;
+  border: 1px solid rgba(185, 154, 102, 0.22);
+}
+
+.person-avatar b {
+  color: var(--paper-dim);
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0.82;
+}
+
+.person-avatar i {
+  position: absolute;
+  bottom: 5px;
+  right: 4px;
+  color: var(--gold-dim);
+  font-family: var(--mono);
+  font-size: 5px;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  writing-mode: vertical-rl;
+  opacity: 0.65;
+}
+
+.person-main { min-width: 0; }
+
+.person-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.person-name {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--paper);
+}
+
+.person-role {
+  color: var(--gold-dim);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+.person-bio {
+  margin-top: 7px;
+  color: var(--paper-dim);
+  font-family: var(--serif);
+  font-size: 11.5px;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+
+.person-bio p + p { margin-top: 3px; }
+
+.person-quote {
+  position: relative;
+  margin-top: 9px;
+  padding: 7px 9px 7px 11px;
+  color: #b9ab91;
+  background: rgba(0, 0, 0, 0.14);
+  border-left: 1px solid rgba(169, 58, 44, 0.55);
+  font-family: var(--serif);
+  font-size: 10.5px;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+}
+
+.person-quote::before {
+  content: "“";
+  color: var(--red-bright);
+  opacity: 0.7;
+}
+
+.person-quote::after {
+  content: "”";
+  color: var(--red-bright);
+  opacity: 0.7;
+}
+
+/* ── 结局图鉴 ─────────────────────────────────────────── */
+.ending-collection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.collection-label {
+  color: var(--fog);
+  font-family: var(--serif);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.collection-label b {
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.collection-seals { display: flex; gap: 5px; }
+
+.collection-seals i {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: rgba(233, 223, 203, 0.16);
+  border: 1px solid rgba(185, 154, 102, 0.16);
+  font-family: var(--serif);
+  font-size: 9px;
+  font-style: normal;
+}
+
+.collection-seals i.is-unlocked {
+  color: var(--red-bright);
+  border-color: rgba(189, 74, 56, 0.55);
+  background: rgba(169, 58, 44, 0.08);
+}
+
+.ending-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  padding-top: 14px;
+}
+
+.ending-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 188px;
+  padding: 13px 12px 12px;
+  text-align: left;
+  color: var(--paper-dim);
+  background:
+    linear-gradient(140deg, rgba(185, 154, 102, 0.07), transparent 62%),
+    #0e130f;
+  border: 1px solid rgba(185, 154, 102, 0.17);
+  overflow: hidden;
+  transition: border-color 200ms, background 200ms, transform 160ms;
+}
+
+.ending-tile.is-unlocked:hover {
+  border-color: rgba(185, 154, 102, 0.46);
+  background:
+    linear-gradient(140deg, rgba(185, 154, 102, 0.12), transparent 62%),
+    #111711;
+}
+
+.ending-tile.is-unlocked:active { transform: scale(0.985); }
+
+.ending-tile__num {
+  color: rgba(185, 154, 102, 0.5);
+  font-family: var(--serif);
+  font-size: 33px;
+  line-height: 1;
+}
+
+.ending-tile.is-unlocked .ending-tile__num { color: rgba(189, 74, 56, 0.68); }
+
+.ending-tile__status {
+  margin-top: 9px;
+  color: var(--fog-dim);
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.16em;
+}
+
+.ending-tile__title {
+  margin-top: 5px;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.ending-tile.is-locked .ending-tile__title { color: rgba(233, 223, 203, 0.24); }
+
+.ending-tile__label {
+  margin-top: 5px;
+  color: var(--gold-dim);
+  font-family: var(--serif);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.ending-tile__summary {
+  margin-top: auto;
+  padding-top: 10px;
+  color: var(--fog);
+  font-family: var(--serif);
+  font-size: 9.5px;
+  line-height: 1.7;
+}
+
+.ending-tile__lock {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 14px;
+  height: 14px;
+  color: rgba(185, 154, 102, 0.3);
+}
+
+.ending-tile.is-locked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg, transparent 0 9px, rgba(233, 223, 203, 0.018) 9px 10px);
+  pointer-events: none;
+}
+
+.ending-tile__arrow {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 14px;
+  height: 1px;
+  background: rgba(185, 154, 102, 0.45);
+}
+
+.ending-tile__arrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  border-top: 1px solid rgba(185, 154, 102, 0.45);
+  border-right: 1px solid rgba(185, 154, 102, 0.45);
+  transform: rotate(45deg);
+}
+
+.collection-complete {
+  margin-top: 14px;
+  padding: 14px 16px;
+  color: var(--paper-soft);
+  background: rgba(169, 58, 44, 0.08);
+  border: 1px solid rgba(169, 58, 44, 0.3);
+  font-family: var(--serif);
+  font-size: 11px;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+.collection-complete b {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+/* ── 时代背景 ─────────────────────────────────────────── */
+.background-hero {
+  position: relative;
+  padding: 24px 0 18px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.background-hero::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 18px;
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(185, 154, 102, 0.12);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.background-kicker {
+  display: block;
+  color: var(--gold-dim);
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.3em;
+  margin-bottom: 10px;
+}
+
+.background-hero h3 {
+  max-width: 84%;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.36;
+  letter-spacing: 0.06em;
+}
+
+.codex-copy {
+  padding: 16px 0 4px;
+}
+
+.codex-copy p {
+  margin-bottom: 13px;
+  color: var(--paper-dim);
+  font-family: var(--serif);
+  font-size: 13px;
+  line-height: 2.05;
+  letter-spacing: 0.022em;
+  text-align: justify;
+  text-indent: 2em;
+}
+
+.codex-copy p:first-child {
+  padding-left: 14px;
+  border-left: 1px solid rgba(169, 58, 44, 0.48);
+  text-indent: 0;
+}
+
+.codex-timeline {
+  position: relative;
+  margin: 10px 0 4px;
+  padding: 4px 0 4px 20px;
+  border-left: 1px solid rgba(185, 154, 102, 0.22);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 17px 4px;
+}
+
+.timeline-item:last-child { padding-bottom: 2px; }
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -24.5px;
+  top: 5px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--gold-dim);
+  background: var(--ink-900);
+  transform: rotate(45deg);
+}
+
+.timeline-item:first-child::before { background: var(--red); border-color: var(--red); }
+
+.timeline-date {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+.timeline-text {
+  color: var(--paper-dim);
+  font-family: var(--serif);
+  font-size: 11.5px;
+  line-height: 1.75;
+}
+
+.codex-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  color: var(--fog);
+  background: rgba(185, 154, 102, 0.04);
+  border-left: 1px solid rgba(169, 58, 44, 0.5);
+  font-family: var(--serif);
+  font-size: 10.5px;
+  line-height: 1.85;
+  letter-spacing: 0.03em;
+}
+
+.codex-end-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 2px;
+  color: var(--fog-dim);
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.2em;
+}
+
+.codex-end-mark::before,
+.codex-end-mark::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line-soft);
+}
+
+@media (max-width: 359px) {
+  .ending-grid { grid-template-columns: 1fr; }
+  .ending-tile { min-height: 146px; }
+  .person-card { grid-template-columns: 48px 1fr; gap: 11px; }
+  .person-avatar { width: 48px; height: 64px; }
+  .person-avatar b { font-size: 28px; }
+}

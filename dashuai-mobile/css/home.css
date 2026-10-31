@@ -1,0 +1,471 @@
+/* ══════════════════════════════════════════════════════════
+   home.css — 封面 / 车票式主菜单
+   ══════════════════════════════════════════════════════════ */
+
+.home-screen {
+  padding:
+    calc(14px + env(safe-area-inset-top))
+    24px
+    calc(12px + env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.home-screen::-webkit-scrollbar { display: none; }
+
+.home-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.home-art svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.92;
+  transform: scale(1.02);
+}
+
+.home-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 10, 8, 0.3), transparent 26%, transparent 68%, rgba(7, 10, 8, 0.75)),
+    radial-gradient(80% 45% at 40% 24%, transparent 30%, rgba(7, 10, 8, 0.18) 100%);
+}
+
+.home-top,
+.home-content,
+.home-nav,
+.home-foot {
+  position: relative;
+  z-index: 2;
+}
+
+.home-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 0 0 auto;
+  animation: fade-up 900ms 100ms var(--ease-out) both;
+}
+
+.micro-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--paper-dim);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+
+.micro-brand__dot {
+  width: 5px;
+  height: 5px;
+  flex: 0 0 5px;
+  border-radius: 50%;
+  background: var(--red-bright);
+  box-shadow: 0 0 0 3px rgba(189, 74, 56, 0.12);
+  animation: micro-pulse 3s ease-in-out infinite;
+}
+
+@keyframes micro-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  padding: 1vh 0 0;
+}
+
+/* ── 海报字 ───────────────────────────────────────────── */
+.poster {
+  position: relative;
+  padding-top: clamp(6px, 2.4vh, 22px);
+  animation: fade-up 1100ms 180ms var(--ease-out) both;
+}
+
+.poster-kicker {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-indent: 0.1em;
+  margin-bottom: clamp(8px, 1.4vh, 16px);
+  opacity: 0.82;
+}
+
+.poster-title {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  color: #f0e5d0;
+  font-family: var(--serif);
+  font-size: clamp(92px, 25vw, 118px);
+  font-weight: 600;
+  line-height: 0.86;
+  letter-spacing: 0.015em;
+  margin-left: -0.05em;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.24),
+    0 20px 60px rgba(0, 0, 0, 0.34);
+}
+
+.poster-title span { display: inline-block; }
+.poster-title span:first-child { transform: translateY(-0.015em); }
+.poster-title span:nth-child(2) { transform: translateY(0.035em); }
+
+.poster-dot {
+  color: var(--red-bright);
+  font-size: 0.31em;
+  font-style: normal;
+  margin-left: 0.03em;
+  transform: translateY(-0.27em);
+  text-shadow: none;
+}
+
+.poster-subrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(12px, 2vh, 20px);
+}
+
+.poster-rule {
+  width: 30px;
+  height: 1px;
+  flex: 0 0 30px;
+  background: linear-gradient(90deg, transparent, rgba(185, 154, 102, 0.7));
+}
+
+.poster-rule:last-child {
+  background: linear-gradient(90deg, rgba(185, 154, 102, 0.7), transparent);
+}
+
+.poster-sub {
+  color: #d9cdb7;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-indent: 0.14em;
+  white-space: nowrap;
+}
+
+.poster-en {
+  margin-top: 9px;
+  color: var(--fog-dim);
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  opacity: 0.7;
+}
+
+.poster-en--cn { margin-top: 5px; letter-spacing: 0.22em; opacity: 0.42; }
+
+.poster-seal {
+  position: absolute;
+  right: 2px;
+  bottom: 10px;
+  display: grid;
+  place-items: center;
+  gap: 3px;
+  width: 52px;
+  height: 66px;
+  padding: 6px;
+  color: rgba(196, 84, 64, 0.86);
+  border: 1.5px solid rgba(180, 70, 52, 0.72);
+  font-family: var(--serif);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  transform: rotate(-4deg);
+  box-shadow: inset 0 0 0 2px rgba(9, 12, 10, 0.18);
+  opacity: 0.9;
+}
+
+.poster-seal::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(180, 70, 52, 0.3);
+}
+
+.home-spacer {
+  flex: 1 1 auto;
+  min-height: clamp(16px, 3vh, 36px);
+}
+
+/* ── 车票 ─────────────────────────────────────────────── */
+.ticket {
+  position: relative;
+  flex: 0 0 auto;
+  color: #2b271e;
+  background:
+    linear-gradient(112deg, rgba(255, 255, 255, 0.14), transparent 32%),
+    repeating-linear-gradient(0deg, rgba(70, 56, 36, 0.025) 0 1px, transparent 1px 4px),
+    linear-gradient(135deg, #dfd3bd 0%, #d2c4aa 55%, #c6b596 100%);
+  padding: 13px 17px 12px;
+  border-radius: 2px;
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(255, 245, 220, 0.08) inset;
+  transform: rotate(-0.35deg);
+  animation: ticket-in 1000ms 420ms var(--ease-out) both;
+}
+
+@keyframes ticket-in {
+  from { opacity: 0; transform: translateY(18px) rotate(-0.35deg); }
+  to { opacity: 1; transform: translateY(0) rotate(-0.35deg); }
+}
+
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  top: 63%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--ink-900);
+  transform: translateY(-50%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.ticket::before { left: -6.5px; }
+.ticket::after { right: -6.5px; }
+
+.ticket-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px dashed rgba(43, 39, 30, 0.3);
+}
+
+.ticket-rail {
+  font-family: var(--serif);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  opacity: 0.82;
+}
+
+.ticket-no {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  opacity: 0.5;
+  white-space: nowrap;
+}
+
+.ticket-route {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0 8px;
+}
+
+.ticket-city {
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.ticket-city b {
+  display: block;
+  color: #25221b;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.ticket-city small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(43, 39, 30, 0.48);
+  font-family: var(--mono);
+  font-size: 6px;
+  letter-spacing: 0.16em;
+}
+
+.ticket-city--right { text-align: right; }
+
+.ticket-track {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1 1 auto;
+  min-width: 20px;
+  color: rgba(43, 39, 30, 0.62);
+}
+
+.ticket-track__line {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, rgba(43, 39, 30, 0.5) 0 3px, transparent 3px 6px);
+}
+
+.ticket-train {
+  width: 28px;
+  height: 16px;
+  flex: 0 0 28px;
+  color: var(--red-deep);
+  opacity: 0.82;
+}
+
+.ticket-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 12px;
+  padding: 8px 0;
+  border-top: 1px dashed rgba(43, 39, 30, 0.3);
+  color: rgba(43, 39, 30, 0.62);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+.ticket-meta span { white-space: nowrap; }
+
+.ticket-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 1px;
+}
+
+.ticket-barcode {
+  width: 86px;
+  height: 14px;
+  opacity: 0.45;
+  background: repeating-linear-gradient(
+    90deg,
+    #2b271e 0 1px,
+    transparent 1px 3px,
+    #2b271e 3px 5px,
+    transparent 5px 8px,
+    #2b271e 8px 9px,
+    transparent 9px 12px
+  );
+}
+
+.ticket-stamp {
+  padding: 2px 6px;
+  color: rgba(151, 48, 35, 0.8);
+  border: 1px solid rgba(151, 48, 35, 0.55);
+  font-family: var(--serif);
+  font-size: 7px;
+  letter-spacing: 0.22em;
+  transform: rotate(-5deg) translateY(-1px);
+}
+
+/* ── 主按钮 ───────────────────────────────────────────── */
+.home-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 14px;
+  animation: fade-up 900ms 620ms var(--ease-out) both;
+}
+
+.home-cta .btn-primary { min-height: 64px; }
+
+/* ── 底部导航 ─────────────────────────────────────────── */
+.home-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex: 0 0 auto;
+  margin-top: clamp(12px, 2.4vh, 22px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-soft);
+  animation: fade-up 900ms 760ms var(--ease-out) both;
+}
+
+.home-nav button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 46px;
+  color: var(--paper-soft);
+  font-family: var(--serif);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  border-right: 1px solid var(--line-soft);
+  transition: color 180ms, background 180ms;
+}
+
+.home-nav button:last-child { border-right: 0; }
+.home-nav button:hover { color: var(--paper); background: rgba(185, 154, 102, 0.05); }
+
+.home-nav .nav-no {
+  color: var(--gold-dim);
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+  margin-top: 15px;
+}
+
+.home-nav em {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.home-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 0 0 auto;
+  padding-top: 10px;
+  color: var(--fog-dim);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+  animation: fade-up 900ms 900ms var(--ease-out) both;
+}
+
+/* ── 小屏适配 ─────────────────────────────────────────── */
+@media (max-height: 760px) {
+  .home-screen { padding-left: 20px; padding-right: 20px; }
+  .poster-title { font-size: clamp(76px, 22vw, 96px); }
+  .poster-kicker { margin-bottom: 6px; }
+  .poster-subrow { margin-top: 10px; }
+  .poster-seal { width: 46px; height: 58px; bottom: 2px; font-size: 9px; }
+  .ticket { padding: 10px 14px 9px; }
+  .ticket-route { padding: 8px 0 7px; }
+  .ticket-city b { font-size: 19px; }
+  .ticket-meta { padding: 6px 0; }
+  .home-cta { margin-top: 10px; }
+  .home-cta .btn-primary { min-height: 56px; }
+  .home-nav { margin-top: 10px; }
+  .home-nav button { min-height: 40px; }
+  .home-nav .nav-no { margin-top: 12px; }
+  .home-foot { padding-top: 7px; }
+}
+
+@media (max-height: 660px) {
+  .poster-seal { display: none; }
+  .poster-en--cn { display: none; }
+  .ticket-bottom { display: none; }
+  .home-foot { display: none; }
+  .home-nav { margin-top: 8px; }
+  .home-spacer { min-height: 10px; }
+}
